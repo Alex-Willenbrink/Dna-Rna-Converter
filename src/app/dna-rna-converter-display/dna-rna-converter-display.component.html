@@ -1,6 +1,12 @@
 <form [formGroup]="form">
   <mat-form-field>
     <textarea formControlName="original" matInput placeholder="Sequence..." matTextareaAutosize matAutosizeMinRows="4"></textarea>
+    <mat-error *ngIf="+form.get('original').hasError('sequenceErrors')">
+      Sequence(s) {{form.get("original").errors["sequenceErrors"].join(", ")}} is/are incorrect
+    </mat-error>
+    <mat-error>
+      is/are incorrectFEFEFEFE
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="complement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
