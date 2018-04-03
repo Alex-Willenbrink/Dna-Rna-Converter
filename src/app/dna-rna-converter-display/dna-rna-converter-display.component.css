@@ -1,0 +1,19 @@
+.mat-card-container {
+  margin: 20px 0;
+  padding-top: 0px;
+}
+
+.sequence-input {
+  width: 100%;
+}
+
+.sequence-input-container {
+  width: 100%;
+}
+
+.card-title {
+  background-color: #4152b4;
+  color: white;
+  margin: 0 -25px 10px -25px;
+  padding: 15px;
+}

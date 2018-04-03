@@ -1,20 +1,52 @@
-<form [formGroup]="form">
-  <mat-form-field>
-    <textarea formControlName="original" matInput placeholder="Sequence..." matTextareaAutosize matAutosizeMinRows="4"></textarea>
-    <mat-error *ngIf="+form.get('original').hasError('sequenceErrors')">
-      Sequence(s) {{form.get("original").errors["sequenceErrors"].join(", ")}} is/are incorrect
-    </mat-error>
-    <mat-error>
-      is/are incorrectFEFEFEFE
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <textarea formControlName="complement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
-  </mat-form-field>
-  <mat-form-field>
-    <textarea formControlName="reverse" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
-  </mat-form-field>
-  <mat-form-field>
-    <textarea formControlName="reverseComplement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
-  </mat-form-field>
-</form>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>DNA / RNA Converter</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <form class="row" [formGroup]="form">
+    <div class="col-lg-6">
+      <mat-card class="mat-card-container mat-elevation-z10">
+        <mat-card-title class="card-title">Original</mat-card-title>
+        <mat-form-field class="sequence-input-container">
+          <textarea class="sequence-input" [errorStateMatcher]="matcher" formControlName="original" matInput placeholder="Sequence..." matTextareaAutosize matAutosizeMinRows="4"></textarea>
+          <mat-error *ngIf="+form.get('original').hasError('sequenceErrors')">
+            Sequence(s) {{form.get("original").errors["sequenceErrors"].join(", ")}} is/are incorrect
+          </mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Primary</button>
+            <button mat-raised-button color="accent">Accent</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="col-lg-6">
+      <mat-card class="mat-card-container mat-elevation-z10">
+        <mat-card-title class="card-title">Complement</mat-card-title>
+        <mat-form-field class="sequence-input-container">
+          <textarea class="sequence-input" formControlName="complement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
+        </mat-form-field>
+      </mat-card>
+    </div>
+
+    <div class="col-lg-6">
+      <mat-card class="mat-card-container mat-elevation-z10">
+        <mat-card-title class="card-title">Reverse</mat-card-title>
+        <mat-form-field class="sequence-input-container">
+          <textarea class="sequence-input" formControlName="reverse" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
+        </mat-form-field>
+      </mat-card>
+    </div>
+
+    <div class="col-lg-6">
+      <mat-card class="mat-card-container mat-elevation-z10">
+        <mat-card-title class="card-title">Reverse Complement</mat-card-title>
+        <mat-form-field class="sequence-input-container">
+          <textarea class="sequence-input" formControlName="reverseComplement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </form>
+</div>

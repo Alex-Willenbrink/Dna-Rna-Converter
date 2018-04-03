@@ -6,8 +6,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatInputModule
+  MatInputModule,
+  MatCardModule,
+  MatToolbarModule
 } from "@angular/material";
+// import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from "./app.component";
 import { DnaRnaConverterDisplayComponent } from "./dna-rna-converter-display/dna-rna-converter-display.component";
@@ -19,7 +22,10 @@ import { DnaRnaConverterDisplayComponent } from "./dna-rna-converter-display/dna
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

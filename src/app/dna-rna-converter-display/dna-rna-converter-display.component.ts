@@ -1,8 +1,31 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  FormGroupDirective,
+  NgForm
+} from "@angular/forms";
 
 import { SequenceValidator } from "./dna-rna-converter-display.validators";
+
+import { ErrorStateMatcher } from "@angular/material/core";
+
+/* Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+}
 
 @Component({
   selector: "dna-rna-converter-display",
@@ -12,6 +35,7 @@ import { SequenceValidator } from "./dna-rna-converter-display.validators";
 export class DnaRnaConverterDisplayComponent implements OnInit {
   form: FormGroup;
   nucleotideConvert: any = {};
+  matcher = new MyErrorStateMatcher();
 
   constructor(private http: HttpClient, private fb: FormBuilder) {}
 
