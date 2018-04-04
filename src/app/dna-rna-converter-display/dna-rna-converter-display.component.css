@@ -17,3 +17,12 @@
   margin: 0 -25px 10px -25px;
   padding: 15px;
 }
+
+.btn-download {
+  min-width: 30px;
+}
+
+.sequence-actions {
+  display: flex;
+  justify-content: flex-end;
+}

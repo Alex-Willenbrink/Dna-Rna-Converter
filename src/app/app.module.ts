@@ -8,7 +8,9 @@ import {
   MatCheckboxModule,
   MatInputModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatIconModule,
+  MatTooltipModule
 } from "@angular/material";
 // import {MatCardModule} from '@angular/material/card';
 
@@ -25,7 +27,9 @@ import { DnaRnaConverterDisplayComponent } from "./dna-rna-converter-display/dna
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,10 +7,10 @@ import {
   FormGroupDirective,
   NgForm
 } from "@angular/forms";
+import { ErrorStateMatcher } from "@angular/material/core";
+import { saveAs } from "file-saver";
 
 import { SequenceValidator } from "./dna-rna-converter-display.validators";
-
-import { ErrorStateMatcher } from "@angular/material/core";
 
 /* Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -48,7 +48,6 @@ export class DnaRnaConverterDisplayComponent implements OnInit {
     });
 
     this.form.get("original").valueChanges.subscribe(sequence => {
-      console.log(this.form.get("original"));
       this.form.get("complement").setValue(this.getComplement(sequence));
       this.form.get("reverse").setValue(this.getReverse(sequence));
       this.form
@@ -86,5 +85,17 @@ export class DnaRnaConverterDisplayComponent implements OnInit {
       .map(char => this.nucleotideConvert[char])
       .reverse()
       .join("");
+  }
+
+  resetOriginalSequence(): void {
+    this.form.get("original").setValue("");
+  }
+
+  download(controlName: string): void {
+    const sequence = this.form.get(controlName).value;
+    const blob = new Blob([sequence], {
+      type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob, `${controlName}.txt`);
   }
 }
