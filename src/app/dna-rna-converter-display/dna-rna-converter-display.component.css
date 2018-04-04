@@ -3,8 +3,14 @@
   padding-top: 0px;
 }
 
+.sequence-options-container {
+  margin: 20px 20px;
+  padding-top: 0px;
+}
+
 .sequence-input {
   width: 100%;
+  cursor: text;
 }
 
 .sequence-input-container {
