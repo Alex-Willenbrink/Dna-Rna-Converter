@@ -1,0 +1,81 @@
+<form class="row" [formGroup]="form">
+  <div class="col-lg-6">
+    <mat-card class="mat-card-container mat-elevation-z10">
+      <mat-card-title class="card-title">Original</mat-card-title>
+      <mat-form-field class="sequence-input-container">
+        <textarea class="sequence-input" [errorStateMatcher]="matcher" formControlName="original" matInput placeholder="Sequence..." matTextareaAutosize matAutosizeMinRows="4"></textarea>
+        <mat-error *ngIf="+form.get('original').hasError('sequenceErrors')">
+          Sequence(s) {{form.get("original").errors["sequenceErrors"].join(", ")}} is/are incorrect
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions class="sequence-actions">
+        <button (click)="resetOriginalSequence()" mat-raised-button color="accent">Reset</button>
+        <button (click)="download('original')" class="btn-download" matTooltip="Download Sequence" matTooltipPosition="above" mat-raised-button color="primary">
+            <mat-icon>
+              <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </mat-icon>
+          </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="col-lg-6">
+    <mat-card class="mat-card-container mat-elevation-z10">
+      <mat-card-title class="card-title">Complement</mat-card-title>
+      <mat-form-field class="sequence-input-container">
+        <textarea class="sequence-input" formControlName="complement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
+      </mat-form-field>
+      <mat-card-actions class="sequence-actions">
+        <button (click)="download('complement')" class="btn-download" matTooltip="Download Sequence" matTooltipPosition="above" mat-raised-button color="primary">
+            <mat-icon>
+              <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </mat-icon>
+          </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="col-lg-6">
+    <mat-card class="mat-card-container mat-elevation-z10">
+      <mat-card-title class="card-title">Reverse</mat-card-title>
+      <mat-form-field class="sequence-input-container">
+        <textarea class="sequence-input" formControlName="reverse" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
+      </mat-form-field>
+      <mat-card-actions class="sequence-actions">
+        <button (click)="download('reverse')" class="btn-download" matTooltip="Download Sequence" matTooltipPosition="above" mat-raised-button color="primary">
+            <mat-icon>
+              <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </mat-icon>
+          </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="col-lg-6">
+    <mat-card class="mat-card-container mat-elevation-z10">
+      <mat-card-title class="card-title">Reverse Complement</mat-card-title>
+      <mat-form-field class="sequence-input-container">
+        <textarea class="sequence-input" formControlName="reverseComplement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
+      </mat-form-field>
+      <mat-card-actions class="sequence-actions">
+        <button (click)="download('reverseComplement')" class="btn-download" matTooltip="Download Sequence" matTooltipPosition="above" mat-raised-button color="primary">
+            <mat-icon>
+              <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </mat-icon>
+          </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</form>

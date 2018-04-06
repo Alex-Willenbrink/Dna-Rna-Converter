@@ -1,0 +1,24 @@
+<form [formGroup]="form">
+  <mat-card class="sequence-options-container mat-elevation-z10">
+    <mat-card-title>Nucleic Acid</mat-card-title>
+    <mat-radio-group formControlName="nucleicAcid">
+      <mat-radio-button value="dna">
+        DNA
+      </mat-radio-button>
+      <mat-radio-button value="rna">
+        RNA
+      </mat-radio-button>
+    </mat-radio-group>
+  </mat-card>
+  <mat-card class="sequence-options-container mat-elevation-z10">
+    <mat-card-title>Sequence Format</mat-card-title>
+    <mat-radio-group formControlName="sequenceFormat">
+      <mat-radio-button value="raw">
+        Raw
+      </mat-radio-button>
+      <mat-radio-button value="fasta">
+        Fasta
+      </mat-radio-button>
+    </mat-radio-group>
+  </mat-card>
+</form>
