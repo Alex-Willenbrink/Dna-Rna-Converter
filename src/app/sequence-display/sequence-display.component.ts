@@ -54,15 +54,21 @@ export class SequenceDisplayComponent implements OnInit {
     this.formService.addForm("sequences", this.form);
 
     this.form.get("original").valueChanges.subscribe(sequence => {
-      this.form
-        .get("complement")
-        .setValue(this.sequenceService.getComplement(sequence));
-      this.form
-        .get("reverse")
-        .setValue(this.sequenceService.getReverse(sequence));
-      this.form
-        .get("reverseComplement")
-        .setValue(this.sequenceService.getReverseComplement(sequence));
+      if (this.form.get("original").valid) {
+        this.form
+          .get("complement")
+          .setValue(this.sequenceService.getComplement(sequence));
+        this.form
+          .get("reverse")
+          .setValue(this.sequenceService.getReverse(sequence));
+        this.form
+          .get("reverseComplement")
+          .setValue(this.sequenceService.getReverseComplement(sequence));
+      } else {
+        this.form.get("complement").setValue("");
+        this.form.get("reverse").setValue("");
+        this.form.get("reverseComplement").setValue("");
+      }
     });
 
     const subscription = this.sequenceService.loaded.subscribe(loaded => {
@@ -89,5 +95,27 @@ export class SequenceDisplayComponent implements OnInit {
       type: "text/plain;charset=utf-8"
     });
     saveAs(blob, `${controlName}.txt`);
+  }
+
+  async upload(files: FileList): Promise<void> {
+    const fileContents = await this.readFile(files[0]);
+    this.form.get("original").setValue(fileContents);
+    (document.getElementById("file-upload") as any).value = "";
+  }
+
+  triggerClickUpload() {
+    document.getElementById("file-upload").click();
+  }
+
+  readFile(file: File) {
+    const reader = new FileReader();
+    const fileContents = new Promise(resolve => {
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+    });
+
+    reader.readAsText(file);
+    return fileContents;
   }
 }

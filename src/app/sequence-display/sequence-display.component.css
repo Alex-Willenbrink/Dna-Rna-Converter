@@ -26,9 +26,29 @@
 
 .btn-download {
   min-width: 30px;
+  margin: 0px !important;
+  margin-left: 5px !important;
+}
+
+.btn-upload {
+  min-width: 30px;
+  margin: 0px !important;
 }
 
 .sequence-actions {
   display: flex;
   justify-content: flex-end;
+}
+
+.original-sequence-options-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#file-upload {
+  display: none;
 }

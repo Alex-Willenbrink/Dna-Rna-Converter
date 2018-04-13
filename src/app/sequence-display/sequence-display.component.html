@@ -3,21 +3,34 @@
     <mat-card class="mat-card-container mat-elevation-z10">
       <mat-card-title class="card-title">Original</mat-card-title>
       <mat-form-field class="sequence-input-container">
-        <textarea class="sequence-input" [errorStateMatcher]="matcher" formControlName="original" matInput placeholder="Sequence..." matTextareaAutosize matAutosizeMinRows="4"></textarea>
+        <textarea class="sequence-input" [errorStateMatcher]="matcher" formControlName="original" spellcheck="false" matInput placeholder="Sequence..." matTextareaAutosize matAutosizeMinRows="4"></textarea>
         <mat-error *ngIf="+form.get('original').hasError('sequenceErrors')">
           Sequence(s) {{form.get("original").errors["sequenceErrors"].join(", ")}} is/are incorrect
         </mat-error>
       </mat-form-field>
       <mat-card-actions class="sequence-actions">
-        <button (click)="resetOriginalSequence()" mat-raised-button color="accent">Reset</button>
-        <button (click)="download('original')" class="btn-download" matTooltip="Download Sequence" matTooltipPosition="above" mat-raised-button color="primary">
-            <mat-icon>
-              <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-              </svg>
-            </mat-icon>
-          </button>
+        <div class="original-sequence-options-container">
+          <button (click)="resetOriginalSequence()" mat-raised-button color="accent">Reset</button>
+          <div>
+              <button (click)="triggerClickUpload()" class="btn-upload" matTooltip="Upload Sequence" matTooltipPosition="above" mat-raised-button color="warn">
+              <mat-icon>
+                <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                </svg>
+              </mat-icon>
+              <input id="file-upload" type="file" (change)="upload($event.target.files)" />
+            </button>
+            <button (click)="download('original')" class="btn-download" matTooltip="Download Sequence" matTooltipPosition="above" mat-raised-button color="primary">
+                <mat-icon>
+                  <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                  </svg>
+                </mat-icon>
+              </button>
+          </div>
+        </div>
       </mat-card-actions>
     </mat-card>
   </div>
