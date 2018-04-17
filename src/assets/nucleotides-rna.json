@@ -1,0 +1,86 @@
+[
+  {
+    "Name": "Adenine",
+    "Base": "A",
+    "ComplementBase": "U",
+    "BasesRepresented": "A"
+  },
+  {
+    "Name": "Uracil",
+    "Base": "U",
+    "ComplementBase": "A",
+    "BasesRepresented": "A"
+  },
+  {
+    "Name": "Guanine",
+    "Base": "G",
+    "ComplementBase": "C",
+    "BasesRepresented": "G"
+  },
+  {
+    "Name": "Cytosine",
+    "Base": "C",
+    "ComplementBase": "G",
+    "BasesRepresented": "C"
+  },
+  {
+    "Name": "Purine",
+    "Base": "R",
+    "ComplementBase": "Y",
+    "BasesRepresented": "A G"
+  },
+  {
+    "Name": "Strong (3 H bonds)",
+    "Base": "S",
+    "ComplementBase": "S",
+    "BasesRepresented": "G C"
+  },
+  {
+    "Name": "Weak (2 H bonds)",
+    "Base": "W",
+    "ComplementBase": "W",
+    "BasesRepresented": "A U"
+  },
+  {
+    "Name": "Keto",
+    "Base": "K",
+    "ComplementBase": "M",
+    "BasesRepresented": "U G"
+  },
+  {
+    "Name": "Amino",
+    "Base": "M",
+    "ComplementBase": "K",
+    "BasesRepresented": "A C"
+  },
+  {
+    "Name": "Not A",
+    "Base": "B",
+    "ComplementBase": "V",
+    "BasesRepresented": "C G U"
+  },
+  {
+    "Name": "Not C",
+    "Base": "D",
+    "ComplementBase": "H",
+    "BasesRepresented": "A G U"
+  },
+  {
+    "Name": "Not G",
+    "Base": "H",
+    "ComplementBase": "D",
+    "BasesRepresented": "A C U"
+  },
+  {
+    "Name": "Not U",
+    "Base": "V",
+    "ComplementBase": "B",
+    "BasesRepresented": "A C G"
+  },
+  {
+    "Name": "Unknown",
+    "Base": "N",
+    "ComplementBase": "N",
+    "BasesRepresented": "A C G U"
+  }
+]
