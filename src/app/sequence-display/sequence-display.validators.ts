@@ -2,6 +2,7 @@ import { AbstractControl } from "@angular/forms";
 
 export class SequenceValidator {
   static createValidator(nucleotideConvert: any) {
+    console.log("nucleotideConvert: ", nucleotideConvert);
     return (originalSequenceControl: AbstractControl) => {
       const sequence = originalSequenceControl.value;
       const sequenceErrors = [];

@@ -8,10 +8,11 @@ export class SequenceService {
   nucleotideDnaConvert: any = {};
   nucleotideRnaConvert: any = {};
   nucleotideConvert: any = {};
-  nucleotideType: string = "DNA";
 
   nucleotidesDna: any = [];
   nucleotidesRna: any = [];
+
+  nucleotideType: BehaviorSubject<string> = new BehaviorSubject("DNA");
 
   loaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -44,7 +45,7 @@ export class SequenceService {
         },
         {}
       );
-      this.selectNucleotideType(this.nucleotideType);
+      this.selectNucleotideType(this.nucleotideType.getValue());
       this.loaded.next(true);
     });
   }
@@ -52,12 +53,12 @@ export class SequenceService {
   selectNucleotideType(nucleotideType: string): void {
     switch (nucleotideType) {
       case "DNA":
-        this.nucleotideType = "DNA";
         this.nucleotideConvert = this.nucleotideDnaConvert;
+        this.nucleotideType.next("DNA");
         break;
       case "RNA":
-        this.nucleotideType = "RNA";
         this.nucleotideConvert = this.nucleotideRnaConvert;
+        this.nucleotideType.next("RNA");
         break;
     }
   }

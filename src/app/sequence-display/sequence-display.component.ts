@@ -4,7 +4,8 @@ import {
   FormGroup,
   FormControl,
   FormGroupDirective,
-  NgForm
+  NgForm,
+  AbstractControl
 } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { saveAs } from "file-saver";
@@ -36,6 +37,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SequenceDisplayComponent implements OnInit {
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
+
+  get originalSequence(): AbstractControl {
+    return this.form.get("original");
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -73,16 +78,23 @@ export class SequenceDisplayComponent implements OnInit {
 
     const subscription = this.sequenceService.loaded.subscribe(loaded => {
       if (loaded) {
-        this.form
-          .get("original")
-          .setValidators(
-            SequenceValidator.createValidator(
-              this.sequenceService.nucleotideConvert
-            )
-          );
-        subscription.unsubscribe();
+        this.revalidateOriginalSequence();
       }
     });
+
+    // subscribe to nucleotide type changes
+    this.sequenceService.nucleotideType.subscribe(value => {
+      this.revalidateOriginalSequence();
+    });
+
+    // subscribe to raw sequence and fasta changes
+  }
+
+  revalidateOriginalSequence(): void {
+    this.originalSequence.setValidators(
+      SequenceValidator.createValidator(this.sequenceService.nucleotideConvert)
+    );
+    this.originalSequence.updateValueAndValidity();
   }
 
   resetOriginalSequence(): void {
