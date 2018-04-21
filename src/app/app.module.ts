@@ -10,10 +10,12 @@ import {
   MatCardModule,
   MatToolbarModule,
   MatIconModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatRadioModule,
+  MatDividerModule
 } from "@angular/material";
-import { MatRadioModule } from "@angular/material/radio";
-// import {MatCardModule} from '@angular/material/card';
+import { AgGridModule } from "ag-grid-angular";
+import { ClipboardModule } from "ngx-clipboard";
 
 import { FormService } from "./form.service";
 import { SequenceService } from "./sequence.service";
@@ -22,13 +24,15 @@ import { AppComponent } from "./app.component";
 import { DnaRnaConverterComponent } from "./dna-rna-converter/dna-rna-converter.component";
 import { ControlPanelComponent } from "./control-panel/control-panel.component";
 import { SequenceDisplayComponent } from "./sequence-display/sequence-display.component";
+import { NucleotideTableComponent } from "./nucleotide-table/nucleotide-table.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     DnaRnaConverterComponent,
     ControlPanelComponent,
-    SequenceDisplayComponent
+    SequenceDisplayComponent,
+    NucleotideTableComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,11 @@ import { SequenceDisplayComponent } from "./sequence-display/sequence-display.co
     MatToolbarModule,
     MatIconModule,
     MatTooltipModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    AgGridModule.withComponents([]),
+    ClipboardModule
   ],
   providers: [FormService, SequenceService],
   bootstrap: [AppComponent]

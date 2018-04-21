@@ -3,24 +3,24 @@ import { FormGroup, AbstractControl } from "@angular/forms";
 
 @Injectable()
 export class FormService {
-  private formGroup: FormGroup = new FormGroup({});
+  form: FormGroup = new FormGroup({});
   resetValue: any = {};
 
   get value(): any {
-    return this.formGroup.value;
+    return this.form.value;
   }
 
   get dirty(): boolean {
-    return this.formGroup.dirty;
+    return this.form.dirty;
   }
 
   get valid(): boolean {
-    return this.formGroup.valid;
+    return this.form.valid;
   }
 
-  addForm(formName: string, formGroup: FormGroup) {
-    this.formGroup.addControl(formName, formGroup);
-    this.resetValue[formName] = formGroup.value;
+  addForm(formName: string, form: AbstractControl) {
+    this.form.addControl(formName, form);
+    this.resetValue[formName] = form.value;
   }
 
   markTreeAsDirty(formNode: AbstractControl) {
@@ -33,10 +33,10 @@ export class FormService {
   }
 
   markAllAsDirty() {
-    this.markTreeAsDirty(this.formGroup);
+    this.markTreeAsDirty(this.form);
   }
 
   reset() {
-    this.formGroup.reset(this.resetValue);
+    this.form.reset(this.resetValue);
   }
 }

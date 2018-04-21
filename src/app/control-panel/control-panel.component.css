@@ -1,0 +1,40 @@
+.sequence-options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.control-panel-container {
+  width: 250px;
+  margin: 20px;
+  margin-right: 0px;
+}
+
+.option-title {
+  font-style: "Arial";
+  font-weight: bold;
+}
+
+.divider {
+  margin: 10px 0;
+}
+
+.nucleic-acid-type-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.radio-button {
+  padding: 3px;
+}
+
+.display-options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 5px;
+  margin-top: 5px;
+}

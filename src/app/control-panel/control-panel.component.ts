@@ -16,16 +16,26 @@ export class ControlPanelComponent implements OnInit {
     private fb: FormBuilder,
     private formService: FormService,
     private sequenceService: SequenceService
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.form = this.fb.group({
       nucleotideType: "DNA",
-      sequenceFormat: "raw"
+      display: this.fb.group({
+        complement: true,
+        reverse: true,
+        reverseComplement: true
+      })
     });
 
+    this.formService.addForm("controlPanel", this.form);
+  }
+
+  ngOnInit() {
     this.form.get("nucleotideType").valueChanges.subscribe(value => {
       this.sequenceService.selectNucleotideType(value);
+    });
+
+    this.form.get("display").valueChanges.subscribe(value => {
+      console.log("value: ", value);
     });
   }
 }

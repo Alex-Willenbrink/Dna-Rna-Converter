@@ -1,6 +1,17 @@
+.sequence-cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100% !important;
+}
+
 .mat-card-container {
-  margin: 20px 0;
+  margin: 20px 20px;
   padding-top: 0px;
+  min-width: 400px;
+  max-width: 600px;
+  width: 45%;
 }
 
 .sequence-options-container {
@@ -28,11 +39,24 @@
   min-width: 30px;
   margin: 0px !important;
   margin-left: 5px !important;
+  margin-right: 15px !important;
+}
+
+.btn-download-original {
+  min-width: 30px;
+  margin: 0px !important;
+  margin-left: 5px !important;
 }
 
 .btn-upload {
   min-width: 30px;
   margin: 0px !important;
+}
+
+.btn-copy {
+  min-width: 30px;
+  margin: 0px !important;
+  background-color: #505050 !important;
 }
 
 .sequence-actions {
@@ -51,4 +75,10 @@
 
 #file-upload {
   display: none;
+}
+
+.card-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

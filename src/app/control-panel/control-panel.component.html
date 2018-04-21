@@ -1,24 +1,22 @@
-<form [formGroup]="form">
-  <mat-card class="sequence-options-container mat-elevation-z10">
-    <mat-card-title>Nucleic Acid</mat-card-title>
-    <mat-radio-group formControlName="nucleotideType">
-      <mat-radio-button value="DNA">
+<form class="control-panel-container" [formGroup]="form">
+  <div class="nucleic-acid-options-container">
+    <h4 class="option-title">Nucleic Acid</h4>
+    <mat-radio-group class="nucleic-acid-type-container" formControlName="nucleotideType">
+      <mat-radio-button class="radio-button" value="DNA">
         DNA
       </mat-radio-button>
-      <mat-radio-button value="RNA">
+      <mat-radio-button class="radio-button" value="RNA">
         RNA
       </mat-radio-button>
     </mat-radio-group>
-  </mat-card>
-  <mat-card class="sequence-options-container mat-elevation-z10">
-    <mat-card-title>Sequence Format</mat-card-title>
-    <mat-radio-group formControlName="sequenceFormat">
-      <mat-radio-button value="raw">
-        Raw
-      </mat-radio-button>
-      <mat-radio-button value="fasta">
-        Fasta
-      </mat-radio-button>
-    </mat-radio-group>
-  </mat-card>
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div formGroupName="display" class="sequence-options-container">
+    <h4 class="option-title">Display</h4>
+    <div class="display-options-container">
+      <mat-checkbox formControlName="complement">Complement</mat-checkbox>
+      <mat-checkbox formControlName="reverse">Reverse</mat-checkbox>
+      <mat-checkbox formControlName="reverseComplement">Reverse Complement</mat-checkbox>
+    </div>
+  </div>
 </form>

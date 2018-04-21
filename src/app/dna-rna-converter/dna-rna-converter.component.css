@@ -1,0 +1,9 @@
+.content-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.sequence-display {
+  width: 100%;
+}

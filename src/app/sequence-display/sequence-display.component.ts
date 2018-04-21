@@ -38,6 +38,13 @@ export class SequenceDisplayComponent implements OnInit {
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
 
+  display: any = { complement: true, reverse: true, reverseComplement: true };
+  matToolText: string = "Copy Sequence";
+
+  changeMatToolText() {
+    this.matToolText = "fefefef";
+  }
+
   get originalSequence(): AbstractControl {
     return this.form.get("original");
   }
@@ -46,9 +53,7 @@ export class SequenceDisplayComponent implements OnInit {
     private fb: FormBuilder,
     private formService: FormService,
     private sequenceService: SequenceService
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.form = this.fb.group({
       original: ["", SequenceValidator.createValidator({})],
       complement: { value: "", disabled: true },
@@ -57,7 +62,9 @@ export class SequenceDisplayComponent implements OnInit {
     });
 
     this.formService.addForm("sequences", this.form);
+  }
 
+  ngOnInit() {
     this.form.get("original").valueChanges.subscribe(sequence => {
       if (this.form.get("original").valid) {
         this.form
@@ -87,7 +94,13 @@ export class SequenceDisplayComponent implements OnInit {
       this.revalidateOriginalSequence();
     });
 
-    // subscribe to raw sequence and fasta changes
+    // subscribe to display option changes
+    this.formService.form
+      .get("controlPanel")
+      .get("display")
+      .valueChanges.subscribe(value => {
+        this.display = value;
+      });
   }
 
   revalidateOriginalSequence(): void {

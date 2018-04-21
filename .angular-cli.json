@@ -15,8 +15,13 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": ["styles.css"],
-      "scripts": [],
+      "styles": [
+        "styles.css",
+        "../node_modules/ag-grid/dist/styles/ag-grid.css",
+        "../node_modules/ag-grid/dist/styles/theme-fresh.css",
+        "../node_modules/ag-grid/dist/styles/ag-theme-material.css"
+      ],
+      "scripts": ["../node_modules/ag-grid/dist/ag-grid.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
