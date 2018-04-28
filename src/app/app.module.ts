@@ -12,10 +12,10 @@ import {
   MatIconModule,
   MatTooltipModule,
   MatRadioModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSnackBarModule
 } from "@angular/material";
 import { AgGridModule } from "ag-grid-angular";
-import { ClipboardModule } from "ngx-clipboard";
 
 import { FormService } from "./form.service";
 import { SequenceService } from "./sequence.service";
@@ -49,7 +49,7 @@ import { NucleotideTableComponent } from "./nucleotide-table/nucleotide-table.co
     MatCheckboxModule,
     MatDividerModule,
     AgGridModule.withComponents([]),
-    ClipboardModule
+    MatSnackBarModule
   ],
   providers: [FormService, SequenceService],
   bootstrap: [AppComponent]

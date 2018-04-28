@@ -6,7 +6,7 @@
         <div>
           Original
         </div>
-        <button mat-raised-button class="btn-copy" matTooltipPosition="above" [matTooltip]="matToolText" (click)="changeMatToolText()" type="button" [ngxClipboard]="original">
+        <button mat-icon-button matTooltipPosition="above" matTooltip="Copy Sequence" (click)="copyToClipboard(this.form.get('original').value); displaySnackBar('Original')" type="button">
           <mat-icon>
             <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 0h24v24H0z" fill="none"/>
@@ -15,12 +15,10 @@
           </mat-icon>
         </button>
       </div>
-
     </mat-card-title>
-    <!-- (cbOnSuccess)="isCopied2 = true" -->
 
     <mat-form-field class="sequence-input-container">
-      <textarea #original class="sequence-input" [errorStateMatcher]="matcher" formControlName="original" spellcheck="false" matInput placeholder="Raw or Fasta Sequence... " matTextareaAutosize matAutosizeMinRows="4"></textarea>
+      <textarea class="sequence-input" [errorStateMatcher]="matcher" formControlName="original" spellcheck="false" matInput placeholder="Raw or Fasta Sequence... " matTextareaAutosize matAutosizeMinRows="4"></textarea>
       <mat-error *ngIf="+form.get('original').hasError('sequenceErrors')">
         Sequence(s) {{form.get("original").errors["sequenceErrors"].join(", ")}} is/are incorrect
       </mat-error>
@@ -52,7 +50,21 @@
   </mat-card>
 
   <mat-card [hidden]="!display['complement']" class="mat-card-container mat-elevation-z10">
-    <mat-card-title class="card-title">Complement</mat-card-title>
+    <mat-card-title class="card-title">
+      <div class="card-header-container">
+        <div>
+          Complement
+        </div>
+        <button mat-icon-button matTooltipPosition="above" matTooltip="Copy Sequence" (click)="copyToClipboard(this.form.get('complement').value); displaySnackBar('Complement')" type="button">
+          <mat-icon>
+            <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
     <mat-form-field class="sequence-input-container">
       <textarea class="sequence-input" formControlName="complement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
     </mat-form-field>
@@ -69,7 +81,21 @@
   </mat-card>
 
   <mat-card [hidden]="!display['reverse']" class="mat-card-container mat-elevation-z10">
-    <mat-card-title class="card-title">Reverse</mat-card-title>
+    <mat-card-title class="card-title">
+      <div class="card-header-container">
+        <div>
+          Reverse
+        </div>
+        <button mat-icon-button matTooltipPosition="above" matTooltip="Copy Sequence" (click)="copyToClipboard(this.form.get('reverse').value); displaySnackBar('Reverse')" type="button">
+          <mat-icon>
+            <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
     <mat-form-field class="sequence-input-container">
       <textarea class="sequence-input" formControlName="reverse" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
     </mat-form-field>
@@ -86,7 +112,21 @@
   </mat-card>
 
   <mat-card [hidden]="!display['reverseComplement']" class="mat-card-container mat-elevation-z10">
-    <mat-card-title class="card-title">Reverse Complement</mat-card-title>
+    <mat-card-title class="card-title">
+      <div class="card-header-container">
+        <div>
+          Reverse Complement
+        </div>
+        <button mat-icon-button matTooltipPosition="above" matTooltip="Copy Sequence" (click)="copyToClipboard(this.form.get('reverseComplement').value); displaySnackBar('Reverse Complement')" type="button">
+          <mat-icon>
+            <svg fill="#FFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
     <mat-form-field class="sequence-input-container">
       <textarea class="sequence-input" formControlName="reverseComplement" matInput matTextareaAutosize matAutosizeMinRows="4"></textarea>
     </mat-form-field>

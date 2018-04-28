@@ -9,6 +9,7 @@ import {
 } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { saveAs } from "file-saver";
+import { MatSnackBar } from "@angular/material";
 
 import { SequenceValidator } from "./sequence-display.validators";
 import { FormService } from "../form.service";
@@ -38,12 +39,7 @@ export class SequenceDisplayComponent implements OnInit {
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  display: any = { complement: true, reverse: true, reverseComplement: true };
-  matToolText: string = "Copy Sequence";
-
-  changeMatToolText() {
-    this.matToolText = "fefefef";
-  }
+  display: any = { complement: false, reverse: false, reverseComplement: true };
 
   get originalSequence(): AbstractControl {
     return this.form.get("original");
@@ -52,7 +48,8 @@ export class SequenceDisplayComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private formService: FormService,
-    private sequenceService: SequenceService
+    private sequenceService: SequenceService,
+    private snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       original: ["", SequenceValidator.createValidator({})],
@@ -101,6 +98,21 @@ export class SequenceDisplayComponent implements OnInit {
       .valueChanges.subscribe(value => {
         this.display = value;
       });
+  }
+
+  displaySnackBar(sequenceType: string): void {
+    this.snackBar.open(`${sequenceType} Sequence`, "Copied", {
+      duration: 1500
+    });
+  }
+
+  copyToClipboard(str: string) {
+    const el = document.createElement("textarea");
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
   }
 
   revalidateOriginalSequence(): void {

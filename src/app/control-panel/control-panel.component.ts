@@ -20,8 +20,8 @@ export class ControlPanelComponent implements OnInit {
     this.form = this.fb.group({
       nucleotideType: "DNA",
       display: this.fb.group({
-        complement: true,
-        reverse: true,
+        complement: false,
+        reverse: false,
         reverseComplement: true
       })
     });

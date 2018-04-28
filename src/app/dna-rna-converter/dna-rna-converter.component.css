@@ -1,9 +1,16 @@
+.sequence-display {
+  width: 100%;
+}
+
+.toolbar {
+  position: fixed !important;
+  margin-top: -60px;
+  z-index: 100;
+}
+
 .content-container {
   display: flex;
   flex-direction: row;
   width: 100%;
-}
-
-.sequence-display {
-  width: 100%;
+  margin-top: 60px;
 }
