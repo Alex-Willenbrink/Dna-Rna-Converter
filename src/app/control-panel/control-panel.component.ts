@@ -35,7 +35,7 @@ export class ControlPanelComponent implements OnInit {
     });
 
     this.form.get("display").valueChanges.subscribe(value => {
-      console.log("value: ", value);
+      // console.log("value: ", value);
     });
   }
 }

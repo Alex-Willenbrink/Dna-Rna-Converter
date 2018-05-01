@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { forkJoin } from "rxjs/observable/forkJoin";
+
+import { nucleotidesDna, nucleotidesRna } from "../assets/nucleotides";
 
 @Injectable()
 export class SequenceService {
@@ -17,40 +17,35 @@ export class SequenceService {
 
   loaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient) {
-    const dnaNucleotideRequest = this.http.get("./assets/nucleotides-dna.json");
-    const rnaNucleotideRequest = this.http.get("./assets/nucleotides-rna.json");
-    forkJoin(dnaNucleotideRequest, rnaNucleotideRequest).subscribe(data => {
-      this.nucleotidesRawDataDna = data[0];
+  constructor() {
+    this.nucleotidesRawDataDna = nucleotidesDna;
+    this.nucleotidesRawData = nucleotidesDna;
+    this.nucleotideDnaConvert = (nucleotidesDna as any).reduce(
+      (nucleotideConvert, nucleotideObj) => {
+        nucleotideConvert[nucleotideObj["Base"]] =
+          nucleotideObj["ComplementBase"];
+        nucleotideConvert[nucleotideObj["Base"].toLowerCase()] = nucleotideObj[
+          "ComplementBase"
+        ].toLowerCase();
+        return nucleotideConvert;
+      },
+      {}
+    );
 
-      this.nucleotidesRawData = data[0];
-      this.nucleotideDnaConvert = (data[0] as any).reduce(
-        (nucleotideConvert, nucleotideObj) => {
-          nucleotideConvert[nucleotideObj["Base"]] =
-            nucleotideObj["ComplementBase"];
-          nucleotideConvert[
-            nucleotideObj["Base"].toLowerCase()
-          ] = nucleotideObj["ComplementBase"].toLowerCase();
-          return nucleotideConvert;
-        },
-        {}
-      );
-
-      this.nucleotidesRawDataRna = data[1];
-      this.nucleotideRnaConvert = (data[1] as any).reduce(
-        (nucleotideConvert, nucleotideObj) => {
-          nucleotideConvert[nucleotideObj["Base"]] =
-            nucleotideObj["ComplementBase"];
-          nucleotideConvert[
-            nucleotideObj["Base"].toLowerCase()
-          ] = nucleotideObj["ComplementBase"].toLowerCase();
-          return nucleotideConvert;
-        },
-        {}
-      );
-      this.selectNucleotideType(this.nucleotideType.getValue());
-      this.loaded.next(true);
-    });
+    this.nucleotidesRawDataRna = nucleotidesRna;
+    this.nucleotideRnaConvert = (nucleotidesRna as any).reduce(
+      (nucleotideConvert, nucleotideObj) => {
+        nucleotideConvert[nucleotideObj["Base"]] =
+          nucleotideObj["ComplementBase"];
+        nucleotideConvert[nucleotideObj["Base"].toLowerCase()] = nucleotideObj[
+          "ComplementBase"
+        ].toLowerCase();
+        return nucleotideConvert;
+      },
+      {}
+    );
+    this.selectNucleotideType(this.nucleotideType.getValue());
+    this.loaded.next(true);
   }
 
   selectNucleotideType(nucleotideType: string): void {
